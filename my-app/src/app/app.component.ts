@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AddwordComponent } from './addword/addword.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  template: `<p>Hello World</p>`,
+  imports: [AddwordComponent],
+  template: `<h1>Hello world!</h1>`,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'To-do List';
+  handleClick() {
+
+    alert("Function Called")
+  }
 }
