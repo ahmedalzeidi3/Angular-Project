@@ -22,6 +22,18 @@
   font-weight: 600;
 }
 
+.remove-button {
+  margin-left: auto;
+  padding: 5px 10px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+
+
 .add-task button:hover {
   background: #1e63d6;
 }

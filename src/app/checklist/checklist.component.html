@@ -8,6 +8,6 @@
     <input type="checkbox" [(ngModel)]="task.done" />
     <span [class.done]="task.done">{{ task.text }}</span>
 
-    <button (click)="removeTask(i)">Remove</button>
+    <button class="remove-button" (click)="removeTask(i)">Remove</button>
   </li>
 </ul>
