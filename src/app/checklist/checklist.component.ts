@@ -29,4 +29,8 @@ export class ChecklistComponent {
     this.tasks.push({ text, done: false });
     this.newTask = '';
   }
+
+  removeTask(index: number) {
+     this.tasks.splice(index, 1); 
+    }
 }
