@@ -41,4 +41,7 @@ export class ChecklistComponent {
   removeTask(index: number) {
      this.tasks.splice(index, 1); 
     }
+  deleteAll() {
+    this.tasks = [];
+  }
 }

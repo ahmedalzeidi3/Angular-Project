@@ -28,11 +28,27 @@
   background: #ff4d4d;
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 15px;
   cursor: pointer;
 }
 
+.task-list {
+  max-height: 300px;
+}
 
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.footer button {
+  border: none;
+  background-color: transparent;
+  color: lightgray;
+  font-size: 30pm;
+}
 
 .add-task button:hover {
   background: #1e63d6;
