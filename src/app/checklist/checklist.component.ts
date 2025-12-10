@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 interface Task {
   text: string;
   done: boolean;
+  dueDate?: string;
 }
 
 @Component({
@@ -21,13 +22,20 @@ export class ChecklistComponent {
   ];
 
   newTask: string = '';
+  newTaskDueDate: string = '';
 
   addTask() {
     const text = this.newTask.trim();
     if (!text) return;
 
-    this.tasks.push({ text, done: false });
+    this.tasks.push({
+      text,
+      done: false,
+      dueDate: this.newTaskDueDate
+    });
+
     this.newTask = '';
+    this.newTaskDueDate = '';
   }
 
   removeTask(index: number) {

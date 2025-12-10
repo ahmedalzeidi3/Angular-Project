@@ -1,5 +1,6 @@
 <div class="add-task">
   <input type="text" placeholder="Add new task..." [(ngModel)]="newTask" />
+  <input type="date" [(ngModel)]="newTaskDueDate" />
   <button (click)="addTask()">Add</button>
 </div>
 
@@ -7,7 +8,7 @@
   <li *ngFor="let task of tasks; let i = index">
     <input type="checkbox" [(ngModel)]="task.done" />
     <span [class.done]="task.done">{{ task.text }}</span>
-
+    <span *ngIf="task.dueDate"> | Due: {{ task.dueDate }}</span>
     <button class="remove-button" (click)="removeTask(i)">Remove</button>
   </li>
 </ul>
