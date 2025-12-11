@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ACTIVITIES } from './activities-data';
+
 
 interface Task {
   text: string;
@@ -8,14 +11,17 @@ interface Task {
   dueDate?: string;
 }
 
+
 @Component({
   selector: 'app-checklist',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './checklist.component.html',
   styleUrls: ['./checklist.component.css']
 })
 export class ChecklistComponent {
+
+
   tasks: Task[] = [
     { text: 'Coding homework 03', done: false },
     { text: 'Haircut', done: true }
@@ -23,10 +29,13 @@ export class ChecklistComponent {
 
   newTask: string = '';
   newTaskDueDate: string = '';
+  randomTask: string = '';
+
 
   constructor() {
     this.sortTasks();
   }
+
 
   addTask() {
     const text = this.newTask.trim();
@@ -41,6 +50,16 @@ export class ChecklistComponent {
     this.sortTasks();
     this.newTask = '';
     this.newTaskDueDate = '';
+  } 
+  
+  apiCallHandling() {
+     const randomActivity = ACTIVITIES[Math.floor(Math.random() * ACTIVITIES.length)];
+
+  this.tasks.push({
+    text: randomActivity.text,
+    done: false,
+    dueDate: this.newTaskDueDate
+    })
   }
 
   removeTask(index: number) {
