@@ -24,6 +24,10 @@ export class ChecklistComponent {
   newTask: string = '';
   newTaskDueDate: string = '';
 
+  constructor() {
+    this.sortTasks();
+  }
+
   addTask() {
     const text = this.newTask.trim();
     if (!text) return;
@@ -34,6 +38,7 @@ export class ChecklistComponent {
       dueDate: this.newTaskDueDate
     });
 
+    this.sortTasks();
     this.newTask = '';
     this.newTaskDueDate = '';
   }
@@ -43,5 +48,27 @@ export class ChecklistComponent {
     }
   deleteAll() {
     this.tasks = [];
+  }
+
+  private sortTasks() {
+    this.tasks.sort((a, b)=> {
+      if (!a.dueDate && !b.dueDate) return 0;
+      if (!a.dueDate) return 1;
+      if (!b.dueDate) return -1;
+      const aTime = new Date(a.dueDate).getTime();
+      const bTime = new Date(b.dueDate).getTime();
+      return aTime - bTime;
+    });
+  }
+  isDueSoon(task: Task):boolean {
+    if (!task.dueDate) return false;
+
+    const now = new Date();
+    const due = new Date(task.dueDate);
+
+    const diffMs = due.getTime() - now.getTime();
+    const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+    return diffDays <= 1 && diffDays >= 0;
   }
 }

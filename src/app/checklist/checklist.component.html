@@ -8,17 +8,24 @@
   <ul class="task-list">
     <li *ngFor="let task of tasks; let i = index">
       <input type="checkbox" [(ngModel)]="task.done" />
-      <span [class.done]="task.done">{{ task.text }}</span>
+
+      <span
+        [class.done]="task.done"
+        [class.due-soon]="isDueSoon(task)"
+      >
+      {{ task.text }}
       <span *ngIf="task.dueDate"> | Due: {{ task.dueDate }}</span>
+      </span>
+
       <button class="remove-button" (click)="removeTask(i)">Remove</button>
-    </li>
+</li>
   </ul>
 </div>
 
 <div class="footer">
   <hr />
   <div class="row">
-    <p class="counter">Total Tasks: {{ tasks.length }}</p>
+    <p class="counter">Total Tasks:{{ tasks.length }}</p>
     <button class="remove-button" (click)="deleteAll()">Delete All</button>
   </div>
 </div>

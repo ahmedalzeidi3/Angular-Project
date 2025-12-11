@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChecklistComponent } from './checklist.component';
 
-describe('ChecklistComponent', () => {
+describe('ChecklistComponent', ()=> {
   let component: ChecklistComponent;
   let fixture: ComponentFixture<ChecklistComponent>;
 
@@ -11,7 +11,6 @@ describe('ChecklistComponent', () => {
       imports: [ChecklistComponent]
     })
     .compileComponents();
-    
     fixture = TestBed.createComponent(ChecklistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
