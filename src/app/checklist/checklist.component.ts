@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ACTIVITIES } from './activities-data';
 
 
 interface Task {
@@ -52,15 +51,14 @@ export class ChecklistComponent {
     this.newTaskDueDate = '';
   } 
   
-  apiCallHandling() {
-     const randomActivity = ACTIVITIES[Math.floor(Math.random() * ACTIVITIES.length)];
-
-  this.tasks.push({
-    text: randomActivity.text,
-    done: false,
-    dueDate: this.newTaskDueDate
-    })
-  }
+ async apiCallHandling() { const result = await fetch('https://dummyjson.com/todos/random');
+  const data = await result.json();
+  this.tasks.push
+  ({ text: data.todo,
+     done: false,
+      dueDate: this.newTaskDueDate
+     })
+    }
 
   removeTask(index: number) {
      this.tasks.splice(index, 1); 
